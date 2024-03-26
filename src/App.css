@@ -1,22 +1,85 @@
-.container {
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Adjust the ratio between search and results columns as needed */
+  gap: 20px;
+  padding: 20px;
+  margin: 20px; /* Adding margin to ensure padding around the page contents */
+  box-sizing: border-box; /* To make sure padding and margin are included in the width */
+  height: calc(100vh - 40px); /* Full height adjusted for margin */
+}
+
+/* Styles for the search column with padding */
+.search-column {
+  padding: 20px; /* Padding around search contents */
   display: flex;
-  flex-direction: row; 
-  justify-content: center; 
-  gap: 20px; 
-  padding: 20px; 
-  max-width: 1200px; 
-  margin: 0 auto;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
 }
 
-.search,
+/* Styles for the results column, where movies will be displayed */
+.results-column {
+  padding: 20px; /* Padding around results contents */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  overflow-y: auto; /* Allows scrolling if content is too long */
+}
+
+/* Adjusting movie component styles for better display in the results column */
+.movie {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc; /* Adds a separator between movies */
+  padding-bottom: 20px; /* Space below each movie */
+}
+
+.movie-image {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.movie-details {
+  flex-grow: 1;
+  max-width: 600px; /* Restrict width of text to keep rows shorter for easier reading */
+}
+
+/* Styles for the search-results-container inside SearchMovies component to ensure alignment */
+.search-results-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .results {
-  flex: 1; 
-  padding: 20px; 
-  box-sizing: border-box; 
+  margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; 
-  }
+/* Adjust the input field and search button for a more user-friendly appearance */
+input[type='text'] {
+  padding: 10px;
+  margin-bottom: 10px; /* Space between input and button */
+  width: calc(100% - 22px); /* Adjust for padding */
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Styles for the movie titles in the search column to appear as clickable links */
+ul {
+  list-style-type: none; /* Remove the default list bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+li {
+  cursor: pointer;
+  color: #0275d8; /* Bootstrap default link color */
+  margin-bottom: 5px;
+}
+
+li:hover {
+  text-decoration: underline; /* Underline on hover for link-like appearance */
 }

@@ -4,7 +4,8 @@ async function searchMovies(query) {
     const response = await fetch(url);
     const data = await response.json();
     
-    console.log(data.results); 
+    console.log(data.results)
+    
     return data.results;
   }
   

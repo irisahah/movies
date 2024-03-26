@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { searchMovies } from './utils';
 
-function SearchMovies() {
+function SearchMovies({ onSearch, onSelectMovie }) {
   const [query, setQuery] = useState('');
 
   const performSearch = async () => {
-    await searchMovies(query);
+    const results = await searchMovies(query);
+    onSearch(results);
   };
 
   return (
